@@ -18,7 +18,7 @@ void main() {
   List<String> arcanos= calcularArcanosNumerologicos(numeros);
 
   Map<String, double> arcanosTable = processarLista(resultado, arcanos);
-  print('O resultado da divisão é: $resultado');
-  print('a lista de arcanos é: $arcanos' );
-  print('a tabela de arcanos é $arcanosTable');
+  // print('O resultado da divisão é: $resultado');
+  // print('a lista de arcanos é: $arcanos' );
+  // print('a tabela de arcanos é $arcanosTable');
 }
