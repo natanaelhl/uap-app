@@ -1,18 +1,14 @@
-Map<String, double> processarLista(double valorDouble, List<String> listaNumeros) {
-
+List<double> processarLista(double valorDouble, List<String> listaNumeros) {
   double acumulador = 0.0;
-  Map<String, double> resultado = {};
-
-  List<dynamic> arcanosTable = [];
+  List<double> arcanosTable = [];
 
   for (String numero in listaNumeros) {
     acumulador += valorDouble;
-    arcanosTable.add(numero);
+    arcanosTable.add(double.parse(numero)); // Convertendo a string para double
     arcanosTable.add(acumulador);
   }
 
-  print(arcanosTable);
-  return resultado;
+  return arcanosTable;
 }
 
 

@@ -1,5 +1,6 @@
 import 'package:uap_app/2_list_arcanos.dart';
 import 'package:uap_app/3_tabela_arcanos.dart';
+import 'package:uap_app/widgets/retorna_arcano_widget.dart';
 
 double calcularDivisao(String numeros) {
   // Identificar o comprimento e subtrair 1
@@ -15,10 +16,12 @@ double calcularDivisao(String numeros) {
 void main() {
   String numeros = '17474131361315473';
   double resultado = calcularDivisao(numeros);
-  List<String> arcanos= calcularArcanosNumerologicos(numeros);
+  // List<String> arcanos = calcularArcanosNumerologicos(numeros);
 
-  Map<String, double> arcanosTable = processarLista(resultado, arcanos);
+  // List<double> arcanosTable = processarLista(resultado, arcanos);
   // print('O resultado da divisão é: $resultado');
   // print('a lista de arcanos é: $arcanos' );
   // print('a tabela de arcanos é $arcanosTable');
+
+  RetornaArcanoWidget.build(numeros, '1960-11-01');
 }

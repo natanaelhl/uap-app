@@ -1,5 +1,7 @@
 void main() {
-  String dataNascimento = '1970-11-01';
+  String dataNascimento = '1960-11-01';
+
+  String listaNumerica = '17474131361315473';
   List<double> listaArcanosFases = [
     17, 5.625, 74, 11.25, 47, 16.875, 74, 22.5, 41, 28.125, 13, 33.75,
     31, 39.375, 13, 45.0, 36, 50.625, 61, 56.25, 13, 61.875, 31, 67.5,
@@ -10,9 +12,9 @@ void main() {
   double faseAtual = calcularFaseAtual(idade, listaArcanosFases);
   int arcanoAtual = encontrarArcanoMaisProximo(faseAtual, listaArcanosFases);
 
-  print('Idade: $idade anos');
-  print('Fase Atual: $faseAtual');
-  print('Arcano Atual: $arcanoAtual');
+  // print('Idade: $idade anos');
+  // print('Fase Atual: $faseAtual');
+  // print('Arcano Atual: $arcanoAtual');
 }
 
 int calcularIdade(String dataNascimento) {
