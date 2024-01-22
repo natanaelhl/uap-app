@@ -1,6 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:uap_app/widgets/numerologia.dart';
 
 void main() {
+  String numeros = '17474131361315473';
+  // double resultado = calcularDivisao(numeros);
+
+  Map result = Numerologia.calcularNumerologia(numeros, '1960-11-01');
+
+  print(result);
   runApp(const MyApp());
 }
 
