@@ -1,6 +1,6 @@
 class Numerologia {
   static Map<String, dynamic> calcularNumerologia(String stringNumerica, String dataNascimento) {
-    List<int> listaNumeros = _obterListaNumeros(stringNumerica);
+    List<int> listaNumeros = obterListaNumeros(stringNumerica);
     double divisionResult = _calcularDivisao(stringNumerica);
     List<String> arcaneList = _calcularArcanosNumerologicos(stringNumerica);
     List<double> arcaneValueList = _processarLista(divisionResult, arcaneList);
@@ -11,6 +11,7 @@ class Numerologia {
 
     int indiceResultante = _encontrarIndice(listaNumeros, arcaneValueList, faseAtual);
 
+    print(stringNumerica);
     Map<String, dynamic> data = {
       'arcanoAtual': arcanoAtual,
       'faseAtual': faseAtual,
@@ -25,7 +26,7 @@ class Numerologia {
     return 90 / comprimento;
   }
 
-  static List<int> _obterListaNumeros(String stringNumerica) {
+  static List<int> obterListaNumeros(String stringNumerica) {
     List<int> digitos = stringNumerica.split('').map((d) => int.parse(d)).toList();
     List<int> arcanos = [];
 
@@ -102,4 +103,10 @@ class Numerologia {
       return -1;
     }
   }
+}
+
+void main () {
+  var result = Numerologia.calcularNumerologia('123456789', '1999-08-26');
+
+  print(result);
 }
