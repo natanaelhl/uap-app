@@ -11,11 +11,18 @@ class Numerologia {
 
     int indiceResultante = _encontrarIndice(listaNumeros, arcaneValueList, faseAtual);
 
-    print(stringNumerica);
+    List<int> listNumers = _stringToList(stringNumerica);
+
+    List<List<int>> triangleList = _generateTriangle(stringNumerica);
+
+    print(triangleList);
+  
+
     Map<String, dynamic> data = {
       'arcanoAtual': arcanoAtual,
       'faseAtual': faseAtual,
       'indiceResultante': indiceResultante,
+      'listNumbers': listNumers
     };
 
     return data;
@@ -24,6 +31,10 @@ class Numerologia {
   static double _calcularDivisao(String numeros) {
     int comprimento = numeros.length - 1;
     return 90 / comprimento;
+  }
+
+  static List<int> _stringToList(String stringNumbers) {
+    return stringNumbers.split('').map((e) => int.parse(e)).toList();
   }
 
   static List<int> obterListaNumeros(String stringNumerica) {
@@ -103,10 +114,29 @@ class Numerologia {
       return -1;
     }
   }
+
+  static List<List<int>> _generateTriangle(String stringNumbers) {
+  List<int> numbers = stringNumbers.split('').map(int.parse).toList();
+  List<List<int>> result = [numbers];
+
+  while (result.last.length > 1) {
+    List<int> nextRow = [];
+    for (int i = 0; i < result.last.length - 1; i++) {
+      int sum = result.last[i] + result.last[i + 1];
+      nextRow.add(reduceToSingleDigit(sum));
+    }
+    result.add(nextRow);
+  }
+
+  return result;
 }
 
-void main () {
-  var result = Numerologia.calcularNumerologia('123456789', '1999-08-26');
-
-  print(result);
+static int reduceToSingleDigit(int number) {
+  while (number >= 10) {
+    number = number.toString().split('').map(int.parse).reduce((a, b) => a + b);
+  }
+  return number;
 }
+
+}
+
