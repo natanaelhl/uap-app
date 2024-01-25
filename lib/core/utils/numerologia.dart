@@ -1,5 +1,5 @@
 class Numerologia {
-  static Map<String, dynamic> calcularNumerologia(String stringNumerica, String dataNascimento) {
+  static Map<String, dynamic> calcularNumerologia(String fullName, String stringNumerica, String dataNascimento) {
     List<int> listaNumeros = obterListaNumeros(stringNumerica);
     double divisionResult = _calcularDivisao(stringNumerica);
     List<String> arcaneList = _calcularArcanosNumerologicos(stringNumerica);
@@ -9,20 +9,23 @@ class Numerologia {
     double faseAtual = _calcularFaseAtual(idade, arcaneValueList);
     int arcanoAtual = _encontrarArcanoMaisProximo(faseAtual, arcaneValueList);
 
-    int indiceResultante = _encontrarIndice(listaNumeros, arcaneValueList, faseAtual);
+    int indiceResultante1 = _encontrarIndice(listaNumeros, arcaneValueList, faseAtual);
+    int indiceResultante2 = indiceResultante1 + 1;
 
     List<int> listNumers = _stringToList(stringNumerica);
 
     List<List<int>> triangleList = _generateTriangle(stringNumerica);
 
-    print(triangleList);
-  
+    String name = addSpacesToString(fullName);
 
     Map<String, dynamic> data = {
       'arcanoAtual': arcanoAtual,
       'faseAtual': faseAtual,
-      'indiceResultante': indiceResultante,
-      'listNumbers': listNumers
+      'indiceResultante1': indiceResultante1,
+      'indiceResultante2': indiceResultante2,
+      'list_numbers': listNumers,
+      'triangle_list': triangleList,
+      'name': name,
     };
 
     return data;
@@ -117,15 +120,17 @@ class Numerologia {
 
   static List<List<int>> _generateTriangle(String stringNumbers) {
   List<int> numbers = stringNumbers.split('').map(int.parse).toList();
-  List<List<int>> result = [numbers];
+  List<List<int>> result = [];
 
-  while (result.last.length > 1) {
+  List<int> currentRow = numbers;
+  while (currentRow.length > 1) {
     List<int> nextRow = [];
-    for (int i = 0; i < result.last.length - 1; i++) {
-      int sum = result.last[i] + result.last[i + 1];
+    for (int i = 0; i < currentRow.length - 1; i++) {
+      int sum = currentRow[i] + currentRow[i + 1];
       nextRow.add(reduceToSingleDigit(sum));
     }
     result.add(nextRow);
+    currentRow = nextRow;
   }
 
   return result;
@@ -137,6 +142,18 @@ static int reduceToSingleDigit(int number) {
   }
   return number;
 }
+
+static String addSpacesToString(String input) {
+  // Remove todos os espaços
+  String noSpaces = input.replaceAll(' ', '');
+
+  // Adiciona três espaços entre cada caractere
+  String spacedString = noSpaces.split('').join('   '); // Três espaços
+
+  return spacedString;
+}
+
+
 
 }
 

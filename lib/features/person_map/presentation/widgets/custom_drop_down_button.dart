@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-const List<String> list = <String>['One', 'Two', 'Three', 'Four'];
+const List<String> list = <String>['Triângulo da Vida', 'Two', 'Three', 'Four'];
 
 class CustomDropDownButton extends StatefulWidget {
   const CustomDropDownButton({super.key});

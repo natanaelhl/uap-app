@@ -1,20 +1,37 @@
 class NumerologyConverter {
   static Map<String, int> letterToNumberMap = {
-    'A': 1, 'J': 1, 'S': 1,
-    'B': 2, 'K': 2, 'T': 2,
-    'C': 3, 'L': 3, 'U': 3,
-    'D': 4, 'M': 4, 'V': 4,
-    'E': 5, 'N': 5, 'W': 5,
-    'F': 6, 'O': 6, 'X': 6,
-    'G': 7, 'P': 7, 'Y': 7,
-    'H': 8, 'Q': 8, 'Z': 8,
-    'I': 9, 'R': 9
+    'a': 1,
+    'b': 2,
+    'c': 3,
+    'd': 4,
+    'e': 5,
+    'f': 8,
+    'g': 3,
+    'h': 5,
+    'i': 1,
+    'j': 1,
+    'k': 2,
+    'l': 3,
+    'm': 4,
+    'n': 5,
+    'o': 7,
+    'p': 8,
+    'q': 1,
+    'r': 2,
+    's': 3,
+    't': 4,
+    'u': 6,
+    'v': 6,
+    'w': 6,
+    'x': 6,
+    'y': 1,
+    'z': 7,
   };
 
   static String convertNameToNumbers(String fullName) {
     String numberString = '';
 
-    for (String letter in fullName.toUpperCase().split('')) {
+    for (String letter in fullName.toLowerCase().split('')) {
       if (letterToNumberMap.containsKey(letter)) {
         numberString += letterToNumberMap[letter]!.toString();
       }
