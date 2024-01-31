@@ -1,9 +1,8 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:uap_app/core/utils/numerology_converter.dart';
 import 'package:uap_app/features/person_map/controller/person_map_controller.dart';
 import 'package:uap_app/features/person_map/model/person_map_model.dart';
+import 'package:uap_app/features/person_map/presentation/widgets/custom_alert_dialog.dart';
 
 class PersonMapView extends StatefulWidget {
   const PersonMapView({super.key});
@@ -37,7 +36,10 @@ class _PersonMapViewState extends State<PersonMapView> {
       body: Column(
         children: [
           ElevatedButton(
-            onPressed: () => _controller.showCustomDialog(context, personMap), 
+            onPressed: () => showDialog(
+      context: context, 
+      builder: (context) => CustomAlertDialog(personMap: personMap, controller: _controller,)
+    ),
           child: const Text('Abrir Triângulo'),)
         ],
       ),

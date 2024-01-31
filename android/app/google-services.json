@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "834506709285",
+    "project_id": "uap-app-f02f0",
+    "storage_bucket": "uap-app-f02f0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:834506709285:android:d8ffc4a8448e268b7062cc",
+        "android_client_info": {
+          "package_name": "com.example.uap_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAERteD40rfs7EP-FsqIGRHkBs_SlfCPUo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

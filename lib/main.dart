@@ -1,8 +1,15 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:uap_app/features/login/view/login_view.dart';
 import 'package:uap_app/features/person_map/presentation/ui/person_map_view.dart';
+import 'package:uap_app/features/register/view/register_view.dart';
+import 'package:uap_app/firebase_options.dart';
 
-void main() {
-
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(const MyApp());
 }
 
@@ -18,7 +25,10 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const PersonMapView(),
+      routes: {'/registerView': (_) => const RegisterView(),
+                '/loginView': (_) => const LoginView(),
+                '/personMapView': (_) => const PersonMapView()},
+      home: const LoginView(),
     );
   }
 }
