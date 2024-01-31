@@ -15,7 +15,10 @@ class CustomIntListWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // Verifica se os índices estão dentro do intervalo da lista
-    if (index1 >= 0 && index1 < intList.length && index2 >= 0 && index2 < intList.length) {
+    if (index1 >= 0 &&
+        index1 < intList.length &&
+        index2 >= 0 &&
+        index2 < intList.length) {
       String concatenatedNumbers = '${intList[index1]}${intList[index2]}';
       print(concatenatedNumbers); // Imprime os números concatenados
     }

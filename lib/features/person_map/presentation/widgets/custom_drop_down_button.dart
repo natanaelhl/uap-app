@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:uap_app/features/person_map/controller/person_map_controller.dart';
 
-const List<String> list = <String>['Triângulo da Vida', 'Triângulo pessoal', 'Triângulo social', 'Triângulo do Destino'];
+const List<String> list = <String>[
+  'Triângulo da Vida',
+  'Triângulo pessoal',
+  'Triângulo social',
+  'Triângulo do Destino'
+];
 
 class CustomDropDownButton extends StatefulWidget {
   final PersonMapController controller;
@@ -12,7 +17,6 @@ class CustomDropDownButton extends StatefulWidget {
 }
 
 class _CustomDropDownButtonState extends State<CustomDropDownButton> {
-
   String dropdownValue = list.first;
 
   @override

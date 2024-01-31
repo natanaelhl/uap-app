@@ -3,7 +3,10 @@ import 'package:flutter/material.dart';
 class CustomIntMatrixWidget extends StatelessWidget {
   final List<List<int>> matrix;
 
-  const CustomIntMatrixWidget({Key? key, required this.matrix,}) : super(key: key);
+  const CustomIntMatrixWidget({
+    Key? key,
+    required this.matrix,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +39,8 @@ class CustomIntMatrixWidget extends StatelessWidget {
               child: Text(
                 line[i],
                 textAlign: TextAlign.center,
-                style: TextStyle(color: highlightedIndices.contains(i) ? Colors.red : null),
+                style: TextStyle(
+                    color: highlightedIndices.contains(i) ? Colors.red : null),
               ),
             ),
           ),

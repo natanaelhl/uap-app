@@ -25,11 +25,12 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      routes: {'/registerView': (_) => const RegisterView(),
-                '/loginView': (_) => const LoginView(),
-                '/personMapView': (_) => const PersonMapView()},
+      routes: {
+        '/registerView': (_) => const RegisterView(),
+        '/loginView': (_) => const LoginView(),
+        '/personMapView': (_) => const PersonMapView()
+      },
       home: const LoginView(),
     );
   }
 }
-

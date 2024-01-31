@@ -40,40 +40,38 @@ class NumerologyConverter {
     return numberString;
   }
 
- static int reduceNumberNumerologically(int number) {
-  while (number >= 10) {
-    number = (number % 10) + (number ~/ 10);
+  static int reduceNumberNumerologically(int number) {
+    while (number >= 10) {
+      number = (number % 10) + (number ~/ 10);
+    }
+    return number;
   }
-  return number;
+
+  static int updateListWithBirthDateNumerology(String birthDate) {
+    int dayOfBirth = int.parse(birthDate.split('-')[2]);
+
+    return dayOfBirth;
+  }
+
+  static int extractAndReduceMonth(String birthDateString) {
+    DateTime birthDate = DateTime.parse(birthDateString);
+    int month = birthDate.month;
+
+    reduceNumberNumerologically(month);
+
+    return reduceNumberNumerologically(month);
+  }
+
+  static int calculateNumerology(String birthDateString) {
+    DateTime birthDate = DateTime.parse(birthDateString);
+    int day = birthDate.day;
+    int month = birthDate.month;
+
+    int reducedDay = reduceNumberNumerologically(day);
+    int reducedMonth = reduceNumberNumerologically(month);
+
+    int numerologyValue =
+        reduceNumberNumerologically(reducedDay + reducedMonth);
+    return numerologyValue;
+  }
 }
-
-static int updateListWithBirthDateNumerology(String birthDate) {
-  int dayOfBirth = int.parse(birthDate.split('-')[2]);
-
-  return dayOfBirth;
-}
-
-static int extractAndReduceMonth(String birthDateString) {
-  DateTime birthDate = DateTime.parse(birthDateString);
-  int month = birthDate.month;
-
-  reduceNumberNumerologically(month);
-
-  return reduceNumberNumerologically(month);
-}
-
-static int calculateNumerology(String birthDateString) {
-  DateTime birthDate = DateTime.parse(birthDateString);
-  int day = birthDate.day;
-  int month = birthDate.month;
-
-  int reducedDay = reduceNumberNumerologically(day);
-  int reducedMonth = reduceNumberNumerologically(month);
-
-  int numerologyValue = reduceNumberNumerologically(reducedDay + reducedMonth);
-  return numerologyValue;
-}
-
-}
-
-

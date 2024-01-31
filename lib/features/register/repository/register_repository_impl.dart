@@ -1,25 +1,23 @@
+import 'package:dartz/dartz.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:uap_app/core/failure/failure.dart';
 import 'package:uap_app/core/services/auth_service.dart';
-import 'package:uap_app/core/services/database_service.dart';
+import 'package:uap_app/features/register/params/sign_up_params.dart';
 import 'package:uap_app/features/register/repository/register_repository.dart';
 
-class RegisterRepositoryImpl implements RegisterRepository{
+class RegisterRepositoryImpl implements RegisterRepository {
   final AuthService authService;
-  final DatabaseService databaseService;
 
-  RegisterRepositoryImpl(this.authService, this.databaseService);
+  RegisterRepositoryImpl(
+    this.authService,
+  );
   @override
-  Future register(String pass, String password) async{
-
-    
-  final futureUser = await authService.instance.createUserWithEmailAndPassword(
-    email: pass, password: password);
-
-  if (futureUser.user != null) {
-    final usersCollection = databaseService.instance.collection('users');
-    usersCollection.doc(authService.instance.currentUser!.uid).set({'email': pass});
-  } else {
-    print('usuario já existe');
+  Future<Either<Failure, UserCredential>> register(SignUpParams params) async {
+    try {
+      return Right(await authService.instance.createUserWithEmailAndPassword(
+          email: params.email, password: params.password));
+    } on Exception catch (e) {
+      return Left(RemoteFailure(message: e.toString()));
+    }
   }
-}
-
 }

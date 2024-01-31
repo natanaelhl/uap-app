@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:uap_app/core/services/auth_service.dart';
 import 'package:uap_app/features/login/controller/login_controller.dart';
 import 'package:uap_app/features/login/repository/login_repository_impl.dart';
+import 'package:uap_app/features/login/usecases/sign_in_usecases_impl.dart';
 import 'package:uap_app/features/login/view/build_login_form.dart';
 import 'package:uap_app/features/login/callbacks/login_callbacks.dart';
 
@@ -19,8 +20,7 @@ class _LoginViewState extends State<LoginView> {
   late final TextEditingController emailController;
   late final TextEditingController passwordController;
 
-
-   @override
+  @override
   void initState() {
     super.initState();
     emailController = TextEditingController();
@@ -28,24 +28,23 @@ class _LoginViewState extends State<LoginView> {
 
     _callbacks = LoginCallbacks(context);
     _controller = LoginController(
-      LoginRepositoryImpl(AuthService()), 
-      onSuccess: () => _callbacks.onLoginSuccessAction(context),
-      onError: () => _callbacks.onLoginErrorAction(context),
-      onNavigate: () => _callbacks.onLoginPushNamedAction(context, '/registerView'));
-      
-    
+        SignInUsecasesImpl(LoginRepositoryImpl(AuthService())),
+        onSuccess: () => _callbacks.onLoginSuccessAction(context),
+        onError: () => _callbacks.onLoginErrorAction(context),
+        onNavigate: () =>
+            _callbacks.onLoginPushNamedAction(context, '/registerView'));
+    ;
   }
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
-      body: buildLoginForm(
-        context,
-        _controller, 
-        emailController,
-        passwordController,) 
-    );
+        body: buildLoginForm(
+      context,
+      _controller,
+      emailController,
+      passwordController,
+    ));
   }
 
   @override
@@ -55,4 +54,3 @@ class _LoginViewState extends State<LoginView> {
     super.dispose();
   }
 }
-

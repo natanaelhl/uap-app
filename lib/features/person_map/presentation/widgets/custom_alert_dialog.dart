@@ -7,27 +7,32 @@ import 'package:uap_app/features/person_map/presentation/widgets/custom_drop_dow
 class CustomAlertDialog extends StatelessWidget {
   final PersonMapModel personMap;
   final PersonMapController controller;
-  const CustomAlertDialog({required this.personMap, required this.controller, super.key});
+  const CustomAlertDialog(
+      {required this.personMap, required this.controller, super.key});
 
   @override
   Widget build(BuildContext context) {
-
     return SingleChildScrollView(
       child: AlertDialog(
-        title: const Text('Escolha um triângulo',),
+        title: const Text(
+          'Escolha um triângulo',
+        ),
         content: SizedBox(
           width: MediaQuery.of(context).size.width * 0.65,
-          
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-            CustomDropDownButton(controller: controller,),
-            const SizedBox(height: 30,),
-            SwitchCaseComplement(personMap: personMap, controller: controller)
-              
-          ],),
+              CustomDropDownButton(
+                controller: controller,
+              ),
+              const SizedBox(
+                height: 30,
+              ),
+              SwitchCaseComplement(personMap: personMap, controller: controller)
+            ],
+          ),
         ),
-        ),
+      ),
     );
   }
 }

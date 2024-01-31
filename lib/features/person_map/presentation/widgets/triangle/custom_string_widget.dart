@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 class CustomStringWidget extends StatelessWidget {
   final String inputString;
 
-  const CustomStringWidget({Key? key, required this.inputString}) : super(key: key);
+  const CustomStringWidget({Key? key, required this.inputString})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -11,7 +12,10 @@ class CustomStringWidget extends StatelessWidget {
       return SizedBox(
         width: 20.0,
         child: Center(
-          child: Text(char, textAlign: TextAlign.center,),
+          child: Text(
+            char,
+            textAlign: TextAlign.center,
+          ),
         ),
       );
     }).toList();
@@ -22,4 +26,3 @@ class CustomStringWidget extends StatelessWidget {
     );
   }
 }
-

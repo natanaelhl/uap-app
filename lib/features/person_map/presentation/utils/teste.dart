@@ -1,5 +1,6 @@
 class Triangle {
-  static Map<String, dynamic> reducaoNumerologica(List<int> lista, int numberSum) {
+  static Map<String, dynamic> reducaoNumerologica(
+      List<int> lista, int numberSum) {
     List<int> sumList = processarLista(lista, numberSum);
     List<List<int>> novaLista = [];
 
@@ -16,11 +17,11 @@ class Triangle {
         novaSublista.add(soma);
       }
       novaLista.add(novaSublista);
-      
+
       // Atualize sumList com a novaSublista
       sumList = novaSublista;
     }
-    
+
     return {'head': firstLine, 'body': novaLista};
   }
 

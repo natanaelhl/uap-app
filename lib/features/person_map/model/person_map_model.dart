@@ -8,15 +8,13 @@ class PersonMapModel {
   final int indiceResultante2;
   final List<List<int>> trianglelist;
 
-  PersonMapModel({
-  required this.name,
-  required this.dataNasc, 
-  required this.arcanoAtual,
-  required this.listNumbers,
-  required this.faseAtual,
-  required this.indiceResultante1,
-  required this.indiceResultante2,
-  required this.trianglelist});
-
+  PersonMapModel(
+      {required this.name,
+      required this.dataNasc,
+      required this.arcanoAtual,
+      required this.listNumbers,
+      required this.faseAtual,
+      required this.indiceResultante1,
+      required this.indiceResultante2,
+      required this.trianglelist});
 }
-

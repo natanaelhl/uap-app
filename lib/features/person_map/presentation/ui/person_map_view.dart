@@ -12,16 +12,16 @@ class PersonMapView extends StatefulWidget {
 }
 
 class _PersonMapViewState extends State<PersonMapView> {
-
   final PersonMapController _controller = PersonMapController();
 
   late PersonMapModel personMap;
 
-  final String numberList = NumerologyConverter.convertNameToNumbers('natanael hausmano lacerda');
-  
+  final String numberList =
+      NumerologyConverter.convertNameToNumbers('natanael hausmano lacerda');
+
   final String dataNasc = '1999-08-26';
 
-  final String fullName = 'natanael hausmano lacerda'; 
+  final String fullName = 'natanael hausmano lacerda';
 
   @override
   void initState() {
@@ -37,10 +37,13 @@ class _PersonMapViewState extends State<PersonMapView> {
         children: [
           ElevatedButton(
             onPressed: () => showDialog(
-      context: context, 
-      builder: (context) => CustomAlertDialog(personMap: personMap, controller: _controller,)
-    ),
-          child: const Text('Abrir Triângulo'),)
+                context: context,
+                builder: (context) => CustomAlertDialog(
+                      personMap: personMap,
+                      controller: _controller,
+                    )),
+            child: const Text('Abrir Triângulo'),
+          )
         ],
       ),
     );

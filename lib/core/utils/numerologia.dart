@@ -10,13 +10,13 @@ class Numerologia {
     final faseAtual = _calcularFaseAtual(idade, arcaneValueList);
     final arcanoAtual = _encontrarArcanoMaisProximo(faseAtual, arcaneValueList);
 
-    final indiceResultante1 = _encontrarIndice(listaNumeros, arcaneValueList, faseAtual);
+    final indiceResultante1 =
+        _encontrarIndice(listaNumeros, arcaneValueList, faseAtual);
     final indiceResultante2 = indiceResultante1 + 1;
 
     final listNumers = _stringToList(stringNumerica);
     final triangleList = _generateTriangle(stringNumerica);
     final name = addSpacesToString(fullName);
-
 
     return {
       'arcanoAtual': arcanoAtual,
@@ -60,13 +60,16 @@ class Numerologia {
     return arcanos;
   }
 
-  static List<double> _processarLista(double valorDouble, List<String> listaNumeros) {
+  static List<double> _processarLista(
+      double valorDouble, List<String> listaNumeros) {
     var acumulador = 0.0;
     final arcanosTable = <double>[];
 
     for (var numero in listaNumeros) {
       acumulador += valorDouble;
-      arcanosTable..add(double.parse(numero))..add(acumulador);
+      arcanosTable
+        ..add(double.parse(numero))
+        ..add(acumulador);
     }
 
     return arcanosTable;
@@ -88,7 +91,8 @@ class Numerologia {
     return listaArcanosFases.last;
   }
 
-  static int _encontrarArcanoMaisProximo(double faseAtual, List<double> listaArcanosFases) {
+  static int _encontrarArcanoMaisProximo(
+      double faseAtual, List<double> listaArcanosFases) {
     var index = 0;
     var menorDiferenca = (faseAtual - listaArcanosFases[1]).abs();
 
@@ -103,7 +107,8 @@ class Numerologia {
     return listaArcanosFases[index].toInt();
   }
 
-  static int _encontrarIndice(List<int> listaInteiros, List<double> listaDouble, double valorQuebrado) {
+  static int _encontrarIndice(
+      List<int> listaInteiros, List<double> listaDouble, double valorQuebrado) {
     if (listaDouble.contains(valorQuebrado)) {
       final indiceDouble = listaDouble.indexOf(valorQuebrado);
       return indiceDouble ~/ 2;
@@ -131,13 +136,13 @@ class Numerologia {
 
   static int reduceToSingleDigit(int number) {
     while (number >= 10) {
-      number = number.toString().split('').map(int.parse).reduce((a, b) => a + b);
+      number =
+          number.toString().split('').map(int.parse).reduce((a, b) => a + b);
     }
     return number;
   }
 
   static String addSpacesToString(String input) {
-    
     final noSpaces = input.replaceAll(' ', '');
     return noSpaces;
   }
