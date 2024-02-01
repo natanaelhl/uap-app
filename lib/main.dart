@@ -1,6 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:uap_app/core/person_list/view/person_list_view.dart';
+import 'package:uap_app/features/person_list/view/person_list_view.dart';
 import 'package:uap_app/features/login/view/login_view.dart';
 import 'package:uap_app/features/person_map/presentation/ui/person_map_view.dart';
 import 'package:uap_app/features/register/view/register_view.dart';
