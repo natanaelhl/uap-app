@@ -8,7 +8,7 @@ class RegisterCallbacks {
   //Callback para quando o registro é bem sucedido
   void onRegisterSuccessAction(BuildContext context) {
     Navigator.pushNamedAndRemoveUntil(
-        context, '/personMapView', (route) => false);
+        context, '/personListView', (route) => true);
   }
 
   //Callback para quando o registro falhar

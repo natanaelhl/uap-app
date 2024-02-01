@@ -14,8 +14,10 @@ class RegisterRepositoryImpl implements RegisterRepository {
   @override
   Future<Either<Failure, UserCredential>> register(SignUpParams params) async {
     try {
-      return Right(await authService.instance.createUserWithEmailAndPassword(
-          email: params.email, password: params.password));
+      UserCredential result = await authService.instance
+          .createUserWithEmailAndPassword(
+              email: params.email, password: params.password);
+      return Right(result);
     } on Exception catch (e) {
       return Left(RemoteFailure(message: e.toString()));
     }

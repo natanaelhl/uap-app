@@ -17,13 +17,15 @@ class RegisterController {
 
   Future handleRegister(SignUpParams params) async {
     isLoading.value = true;
-    usecases.call(params).then((value) => value.fold((l) {
-          isLoading.value = false;
-          onError();
-        }, (r) {
-          isLoading.value = false;
-          onSuccess();
-        }));
+    var result = await usecases.call(params);
+
+    result.fold((l) {
+      isLoading.value = false;
+      onError();
+    }, (r) {
+      isLoading.value = false;
+      onSuccess();
+    });
   }
 
   handleNavigateFeature() {

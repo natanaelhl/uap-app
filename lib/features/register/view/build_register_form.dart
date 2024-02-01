@@ -49,11 +49,14 @@ Widget _buildRegisterButton(
   return ValueListenableBuilder<bool>(
       valueListenable: controller.isLoading,
       builder: (_, isLoading, __) {
-        SignUpParams params = SignUpParams(
-            email: emailController.text, 
-            password: passwordController.text,);
         return CustomElevatedButton(
-          onPressed: () => controller.handleRegister(params),
+          onPressed: () {
+            SignUpParams params = SignUpParams(
+              email: emailController.text,
+              password: passwordController.text,
+            );
+            controller.handleRegister(params);
+          },
           child: isLoading
               ? const CircularProgressIndicator.adaptive()
               : const Text('Registre-se'),

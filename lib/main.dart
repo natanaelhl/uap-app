@@ -1,8 +1,10 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:uap_app/core/person_list/view/person_list_view.dart';
 import 'package:uap_app/features/login/view/login_view.dart';
 import 'package:uap_app/features/person_map/presentation/ui/person_map_view.dart';
 import 'package:uap_app/features/register/view/register_view.dart';
+import 'package:uap_app/features/splash/view/splash_view.dart';
 import 'package:uap_app/firebase_options.dart';
 
 void main() async {
@@ -20,6 +22,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
@@ -28,9 +31,10 @@ class MyApp extends StatelessWidget {
       routes: {
         '/registerView': (_) => const RegisterView(),
         '/loginView': (_) => const LoginView(),
+        '/personListView': (_) => const PersonListView(),
         '/personMapView': (_) => const PersonMapView()
       },
-      home: const LoginView(),
+      home: const SplashView(),
     );
   }
 }
