@@ -9,7 +9,7 @@ class SplashController {
   handleAuthentication() {
     Future.delayed(const Duration(seconds: 3)).then((_) {
       if (service.instance.currentUser != null) {
-        callbacks.navigatorPage('/personMapView');
+        callbacks.navigatorPage('/personListView');
       } else {
         callbacks.navigatorPage('/loginView');
       }

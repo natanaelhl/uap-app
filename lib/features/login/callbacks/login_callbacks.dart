@@ -8,7 +8,7 @@ class LoginCallbacks {
   // Callback para quando o login é bem-sucedido
   void onLoginSuccessAction(BuildContext context) {
     Navigator.pushNamedAndRemoveUntil(
-        context, '/personMapView', (route) => false);
+        context, '/personListView', (route) => false);
   }
 
   //Callback para quando o login falha
