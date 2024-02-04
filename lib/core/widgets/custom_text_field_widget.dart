@@ -6,16 +6,19 @@ class CustomTextField extends StatelessWidget {
   final Color focusedColor;
   final Color? cursorColor;
   final List<TextInputFormatter>? inputFormatters;
+  final TextEditingController controller;
   const CustomTextField(
       {super.key,
       required this.hintText,
       required this.focusedColor,
+      required this.controller,
       this.inputFormatters,
       this.cursorColor});
 
   @override
   Widget build(BuildContext context) {
     return TextField(
+      controller: controller,
       inputFormatters: inputFormatters,
       cursorColor: cursorColor,
       decoration: InputDecoration(

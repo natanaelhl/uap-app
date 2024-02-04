@@ -1,7 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:uap_app/features/home/view/home_view.dart';
-import 'package:uap_app/features/person_list/view/person_list_view.dart';
+import 'package:uap_app/features/create_map/view/create_map_view.dart';
 import 'package:uap_app/features/login/view/login_view.dart';
 import 'package:uap_app/features/person_map/presentation/ui/person_map_view.dart';
 import 'package:uap_app/features/register/view/register_view.dart';
@@ -31,11 +31,11 @@ class MyApp extends StatelessWidget {
       routes: {
         '/registerView': (_) => const RegisterView(),
         '/loginView': (_) => const LoginView(),
-        '/personListView': (_) => const PersonListView(),
+        '/personListView': (_) => const CreateMapView(),
         '/personMapView': (_) => const PersonMapView(),
         '/homeView': (_) => const HomeView(),
       },
-      home: const HomeView(),
+      home: const LoginView(),
     );
   }
 }
