@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:uap_app/core/drawer/widget/build_custom_drawer.dart';
 import 'package:uap_app/core/drawer/widget/custom_drawer_widget.dart';
+import 'package:uap_app/core/widgets/custom_app_bar_widget.dart';
+import 'package:uap_app/features/person_list/view/build_list_view.dart';
 
 class PersonListView extends StatefulWidget {
   const PersonListView({super.key});
@@ -13,9 +14,11 @@ class _PersonListViewState extends State<PersonListView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(),
-        drawer: CustomDrawerWidget(
-          context: context,
-        ));
+      appBar: const CustomAppBarWidget(),
+      drawer: CustomDrawerWidget(
+        context: context,
+      ),
+      body: buildPersonListView(),
+    );
   }
 }
