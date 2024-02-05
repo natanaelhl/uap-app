@@ -5,7 +5,9 @@ import 'package:uap_app/core/services/database_service.dart';
 import 'package:uap_app/core/widgets/custom_app_bar_widget.dart';
 import 'package:uap_app/features/create_map/controller/create_map_controller.dart';
 import 'package:uap_app/features/create_map/repositories/create_person_map_repository_impl.dart';
+import 'package:uap_app/features/create_map/repositories/get_person_list_repository_impl.dart';
 import 'package:uap_app/features/create_map/usecases/create_person_map_usecase_impl.dart';
+import 'package:uap_app/features/create_map/usecases/get_person_list_usecase_impl.dart';
 import 'package:uap_app/features/create_map/view/build_create_map_view.dart';
 
 class CreateMapView extends StatefulWidget {
@@ -23,15 +25,21 @@ class _CreateMapViewState extends State<CreateMapView> {
     super.initState();
     _controller = CreateMapController(
         CreatePersonMapUsecaseImpl(CreatePersonMapRepositoryImpl(
-      AuthService(),
-      DatabaseService(),
-    )));
+          AuthService(),
+          DatabaseService(),
+        )),
+        GetPersonListUsecaseImpl(
+            GetPersonListRepositoryImpl(AuthService(), DatabaseService())), context,);
+
+    _controller.getPersonList();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const CustomAppBarWidget(),
+      appBar: const CustomAppBarWidget(
+        title: Text('Crie Mapas'),
+      ),
       drawer: CustomDrawerWidget(
         context: context,
       ),

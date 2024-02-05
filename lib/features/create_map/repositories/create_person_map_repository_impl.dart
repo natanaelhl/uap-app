@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:dartz/dartz.dart';
 import 'package:uap_app/core/failure/failure.dart';
 import 'package:uap_app/core/services/auth_service.dart';
@@ -17,13 +19,13 @@ class CreatePersonMapRepositoryImpl implements CreatePersonMapRepository {
       final doc = dbService.instance
           .collection('users')
           .doc(authService.instance.currentUser!.uid)
-          .collection('persons')
+          .collection('people')
           .doc();
 
       final PersonModel person =
-          PersonModel(name: params.name, data: params.data);
+          PersonModel(name: params.name, data: params.data, id: doc.id);
 
-      doc.set({'name': params.name, 'data': params.data});
+      doc.set(toMap(person));
       return Right(person);
     } on Exception catch (e) {
       return Left(RemoteFailure(message: e.toString()));

@@ -28,7 +28,9 @@ class _HomeViewState extends State<HomeView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const CustomAppBarWidget(),
+      appBar: const CustomAppBarWidget(
+        title: Text('Home'),
+      ),
       drawer: CustomDrawerWidget(context: context),
       body: buildHomeView(context, _controller),
     );

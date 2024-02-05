@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:uap_app/core/colors/app_colors.dart';
@@ -64,9 +66,11 @@ class ComplementFormMap extends StatelessWidget {
             Expanded(
               child: SizedBox(
                   child: CustomElevatedIconButtonWidget(
-                onPressed: () {
-                  controller.createPersonMap(PersonParams(
+                onPressed: () async{
+                  final result = await controller.createPersonMap(PersonParams(
                       name: nameController.text, data: dataController.text));
+
+                  inspect(result);
                 },
                 label: const Text('Criar Mapa'),
                 color: AppColors.color3.color,
