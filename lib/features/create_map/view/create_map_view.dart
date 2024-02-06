@@ -24,12 +24,14 @@ class _CreateMapViewState extends State<CreateMapView> {
   void initState() {
     super.initState();
     _controller = CreateMapController(
-        CreatePersonMapUsecaseImpl(CreatePersonMapRepositoryImpl(
-          AuthService(),
-          DatabaseService(),
-        )),
-        GetPersonListUsecaseImpl(
-            GetPersonListRepositoryImpl(AuthService(), DatabaseService())), context,);
+      CreatePersonMapUsecaseImpl(CreatePersonMapRepositoryImpl(
+        AuthService(),
+        DatabaseService(),
+      )),
+      GetPersonListUsecaseImpl(
+          GetPersonListRepositoryImpl(AuthService(), DatabaseService())),
+      context,
+    );
 
     _controller.getPersonList();
   }

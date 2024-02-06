@@ -36,7 +36,6 @@ class _PersonMapViewState extends State<PersonMapView> {
 
   @override
   Widget build(BuildContext context) {
-
     var arguments = ModalRoute.of(context)!.settings.arguments as PersonModel;
     inspect(arguments);
     return Scaffold(

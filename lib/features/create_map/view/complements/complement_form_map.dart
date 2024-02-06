@@ -66,7 +66,7 @@ class ComplementFormMap extends StatelessWidget {
             Expanded(
               child: SizedBox(
                   child: CustomElevatedIconButtonWidget(
-                onPressed: () async{
+                onPressed: () async {
                   final result = await controller.createPersonMap(PersonParams(
                       name: nameController.text, data: dataController.text));
 

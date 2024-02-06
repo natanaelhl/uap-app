@@ -13,17 +13,18 @@ class CreateMapController {
 
   CreateMapController(this.usecase, this.getPersonListUsecase, this.context);
 
-  final ValueNotifier<List<PersonModel>> listPeople = ValueNotifier<List<PersonModel>>([]);
+  final ValueNotifier<List<PersonModel>> listPeople =
+      ValueNotifier<List<PersonModel>>([]);
 
   Future createPersonMap(PersonParams params) async {
     var result = await usecase.createPersonMap(params);
 
-    result.fold((l) => print('deu erro'), (r){
+    result.fold((l) => print('deu erro'), (r) {
       Navigator.of(context).pushNamed('/personMapView', arguments: r);
     });
   }
 
-  Future<void> getPersonList()async {
+  Future<void> getPersonList() async {
     var result = await getPersonListUsecase.getListPerson();
 
     result.fold((l) => null, (r) {

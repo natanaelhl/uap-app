@@ -47,7 +47,7 @@ Widget buildCustomDrawer(CustomDrawerController controller) {
         ),
         ListTile(
           title: const Text('Sair'),
-          leading: Icon(Icons.logout),
+          leading: const Icon(Icons.logout),
           onTap: () {
             controller.signOut();
             // Update the state of the app.

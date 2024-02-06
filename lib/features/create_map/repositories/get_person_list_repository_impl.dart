@@ -15,18 +15,16 @@ class GetPersonListRepositoryImpl implements GetPersonListRepository {
 
   @override
   Future<Either<Failure, List<PersonModel>>> getListPerson() async {
-    
     try {
       var result = await dbService.instance
           .collection('users')
           .doc(authService.instance.currentUser!.uid)
           .collection('people')
           .get();
-      
 
       List<PersonModel> personList =
           result.docs.map((e) => PersonModel.fromJson(e)).toList();
-      
+
       return Right(personList);
     } on Exception catch (e) {
       return Left(RemoteFailure(message: e.toString()));
