@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:uap_app/core/colors/app_colors.dart';
 import 'package:uap_app/core/widgets/custom_elevated_button_widget.dart';
+import 'package:uap_app/core/widgets/custom_text_field_widget.dart';
 import 'package:uap_app/core/widgets/custom_text_form_field_widget.dart';
 import 'package:uap_app/features/login/controller/login_controller.dart';
 import 'package:uap_app/features/login/params/sign_in_params.dart';
@@ -36,7 +38,10 @@ Widget buildLoginForm(
 }
 
 Widget _buildEmailField(TextEditingController emailController) {
-  return CustomTextFormField(controller: emailController);
+  return CustomTextField(
+      hintText: '',
+      focusedColor: AppColors.color4.color,
+      controller: emailController);
 }
 
 Widget _buildPasswordField(TextEditingController passwordController) {
@@ -55,6 +60,7 @@ Widget _buildLoginButton(
   return ValueListenableBuilder(
       valueListenable: controller.isLoading,
       builder: (_, isLoading, __) => CustomElevatedButton(
+            color: AppColors.color3.color,
             onPressed: () {
               SignInParams params = SignInParams(
                   email: emailController.text,
@@ -69,6 +75,7 @@ Widget _buildLoginButton(
 
 Widget _buildRegisterButton(BuildContext context, LoginController controller) {
   return CustomElevatedButton(
+    color: AppColors.color3.color,
     onPressed: () {
       controller.handleNavigateFeature();
     },

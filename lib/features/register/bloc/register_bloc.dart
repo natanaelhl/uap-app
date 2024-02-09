@@ -5,30 +5,31 @@ import 'package:uap_app/core/bloc/bloc_state.dart';
 import 'package:uap_app/features/register/bloc/register_event.dart';
 import 'package:uap_app/features/register/params/sign_up_params.dart';
 import 'package:uap_app/features/register/usecase/sign_up_usecase.dart';
+import 'package:uap_app/features/register/view/components/add_user_info_usecase.dart';
 
 class RegisterBloc extends Bloc {
-
   final SignUpUsecase signUpUsecase;
+  final AddUserInfoUsecase addUserInfoUsecase;
 
-  RegisterBloc(this.signUpUsecase);
+  RegisterBloc(this.signUpUsecase, this.addUserInfoUsecase);
 
   @override
   mapListenEvent(BlocEvent event) {
     if (event is RegisterEventOnReady) {
       dispatchState(BlocStableState());
-    }
-    else if (event is RegisterEventSignUp) {
+    } else if (event is RegisterEventSignUp) {
       return _handleSignUp(event.params, event.context);
     }
   }
 
-
-  Future _handleSignUp(SignUpParams params, BuildContext context) async{
+  Future _handleSignUp(SignUpParams params, BuildContext context) async {
     dispatchState(BlocLoadingState());
     var result = await signUpUsecase.call(params);
-    result.fold((l){
+
+    result.fold((l) {
       dispatchState(BlocStableState());
-    }, (r){
+    }, (r) {
+      addUserInfoUsecase.call(params);
       navigateRemoveUntil(context, '/homeView');
     });
   }

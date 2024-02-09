@@ -23,7 +23,7 @@ extension AppColorsExtension on AppColors {
       case AppColors.color5:
         return const Color.fromRGBO(172, 220, 174, 1);
       case AppColors.color6:
-        return const Color.fromRGBO(118, 185, 71, 1);
+        return Color(0xFF76B947);
     }
   }
 }

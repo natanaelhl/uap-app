@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:uap_app/core/injector/injector.dart';
 import 'package:uap_app/features/home/view/home_view.dart';
 import 'package:uap_app/features/create_map/view/create_map_view.dart';
 import 'package:uap_app/features/login/view/login_view.dart';
@@ -12,6 +13,7 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  Injector.build();
   runApp(const MyApp());
 }
 

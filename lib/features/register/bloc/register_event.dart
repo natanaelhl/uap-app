@@ -4,7 +4,7 @@ import 'package:uap_app/features/register/params/sign_up_params.dart';
 
 class RegisterEvent extends BlocEvent {}
 
-class RegisterEventOnReady implements RegisterEvent{}
+class RegisterEventOnReady implements RegisterEvent {}
 
 class RegisterEventSignUp implements RegisterEvent {
   final BuildContext context;
@@ -15,4 +15,3 @@ class RegisterEventSignUp implements RegisterEvent {
     required this.params,
   });
 }
-

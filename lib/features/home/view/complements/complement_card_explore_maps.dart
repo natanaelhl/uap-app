@@ -107,6 +107,7 @@ class _ComplementCardExploreMapsState extends State<ComplementCardExploreMaps>
                     ),
                     const SizedBox(height: 20),
                     CustomElevatedButton(
+                        color: AppColors.color3.color,
                         onPressed: () {
                           widget.controller.handleNavigateFeature();
                         },

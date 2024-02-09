@@ -4,7 +4,7 @@ import 'package:uap_app/core/bloc/bloc_event.dart';
 import 'package:uap_app/core/bloc/bloc_state.dart';
 import 'package:uap_app/core/mixins/hud_mixin.dart';
 
-abstract class Bloc with HudMixins{
+abstract class Bloc with HudMixins {
   late StreamController<BlocState> _state;
   Stream<BlocState> get state => _state.stream;
 
@@ -27,4 +27,10 @@ abstract class Bloc with HudMixins{
   }
 
   mapListenEvent(BlocEvent event);
+
+  void dispose() {
+    print('chegou aqui 2');
+    _state.close();
+    _event.close();
+  }
 }
