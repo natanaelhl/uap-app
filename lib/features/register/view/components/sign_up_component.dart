@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:uap_app/core/colors/app_colors.dart';
 
-class SignUpComplement extends StatelessWidget {
+class SignUpComponent extends StatelessWidget {
   final Widget firstNameField;
   final Widget secondNameField;
   final Widget emailField;
@@ -11,7 +11,7 @@ class SignUpComplement extends StatelessWidget {
   final Widget registerElevatedButton;
   final Widget loginElevatedButton;
 
-  const SignUpComplement({
+  const SignUpComponent({
     required this.firstNameField,
     required this.secondNameField,
     required this.emailField,

@@ -6,15 +6,13 @@ import 'package:uap_app/core/widgets/custom_text_form_field_widget.dart';
 import 'package:uap_app/features/register/bloc/register_bloc.dart';
 import 'package:uap_app/features/register/bloc/register_event.dart';
 import 'package:uap_app/features/register/params/sign_up_params.dart';
-import 'package:uap_app/features/register/view/components/sign_up_complement.dart';
+import 'package:uap_app/features/register/view/components/sign_up_component.dart';
 
 class RegisterViewStableState extends StatefulWidget {
   final RegisterBloc bloc;
   final BlocState state;
   const RegisterViewStableState(
-      {required this.bloc,
-      required this.state,
-      super.key});
+      {required this.bloc, required this.state, super.key});
 
   @override
   State<RegisterViewStableState> createState() =>
@@ -38,7 +36,7 @@ class _RegisterViewStableStateState extends State<RegisterViewStableState> {
 
   @override
   Widget build(BuildContext context) {
-    return SignUpComplement(
+    return SignUpComponent(
       firstNameField:
           _buildCustomTextField(firstNameController, 'Primeiro nome'),
       secondNameField: _buildCustomTextField(lastNameController, 'Sobrenome'),
@@ -102,15 +100,18 @@ class _RegisterViewStableStateState extends State<RegisterViewStableState> {
                 child: CircularProgressIndicator(
                   color: AppColors.color4.color,
                 ))
-            : const Text('Crie a sua conta'));
+            : const Text('Continue'));
   }
 
   Widget _buildCustomElevatedLoginButton() {
     return CustomElevatedButton(
         height: 35,
         color: AppColors.color3.color,
-        onPressed: () {},
-        child: const Text('Entrar'));
+        onPressed: () {
+          widget.bloc.dispatchEvent(RegisterEventNavigateNamed(
+              context: context, routeName: '/loginView'));
+        },
+        child: const Text('Já tenho conta'));
   }
 
   @override

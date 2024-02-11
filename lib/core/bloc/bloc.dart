@@ -29,7 +29,6 @@ abstract class Bloc with HudMixins {
   mapListenEvent(BlocEvent event);
 
   void dispose() {
-    print('chegou aqui 2');
     _state.close();
     _event.close();
   }

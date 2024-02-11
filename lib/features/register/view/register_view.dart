@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
+import 'package:uap_app/core/widgets/custom_app_bar_widget.dart';
 import 'package:uap_app/features/register/bloc/register_bloc.dart';
 import 'package:uap_app/features/register/bloc/register_event.dart';
 import 'package:uap_app/features/register/view/register_view_stable_state.dart';
@@ -25,14 +26,15 @@ class _RegisterViewState extends State<RegisterView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        appBar: const CustomAppBarWidget(
+            title: Text(
+          'UAP',
+          style: TextStyle(fontWeight: FontWeight.bold, letterSpacing: 2),
+        )),
         body: StreamBuilder(
             stream: _bloc.state,
             builder: (context, snapshot) {
-              if (snapshot.connectionState == ConnectionState.waiting) {
-                return const Center(
-                  child: CircularProgressIndicator(),
-                );
-              } else if (snapshot.hasData) {
+              if (snapshot.hasData) {
                 return RegisterViewStableState(
                   bloc: _bloc,
                   state: snapshot.data!,

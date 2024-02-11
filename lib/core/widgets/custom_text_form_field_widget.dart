@@ -17,7 +17,6 @@ class CustomTextFormField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print('chegou aqui XX');
     return Container(
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(5),

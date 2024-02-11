@@ -15,3 +15,13 @@ class RegisterEventSignUp implements RegisterEvent {
     required this.params,
   });
 }
+
+class RegisterEventNavigateNamed implements RegisterEvent {
+  final BuildContext context;
+  final String routeName;
+
+  const RegisterEventNavigateNamed({
+    required this.context,
+    required this.routeName,
+  });
+}

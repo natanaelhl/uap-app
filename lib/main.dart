@@ -37,7 +37,7 @@ class MyApp extends StatelessWidget {
         '/personMapView': (_) => const PersonMapView(),
         '/homeView': (_) => const HomeView(),
       },
-      home: const RegisterView(),
+      home: const LoginView(),
     );
   }
 }

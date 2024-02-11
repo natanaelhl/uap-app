@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:dartz/dartz.dart';
 import 'package:uap_app/core/failure/failure.dart';
 import 'package:uap_app/core/services/auth_service.dart';
