@@ -19,32 +19,33 @@ class RegisterBloc extends Bloc {
   mapListenEvent(BlocEvent event) {
     if (event is RegisterEventOnReady) {
       dispatchState(BlocStableState());
-    } else if (event is RegisterEventSignUp) {
-      Map analyze = registerDataAnalyze(event.params);
-
-      return analyze['error']
-          ? _handleShowError(analyze['data'], event.context)
-          : _handleSignUp(event.params, event.context);
     } else if (event is RegisterEventNavigateNamed) {
       navigateNamed(event.context, event.routeName);
+    } else if (event is RegisterEventSignUp) {
+      _handleRegisterAuthentication(event.context, event.params);
     }
   }
 
-  _handleShowError(List data, context) {
-    inspect(data);
-    testeError(context, data);
-  }
-
-  Future _handleSignUp(SignUpParams params, BuildContext context) async {
+  void _handleRegisterAuthentication(
+      BuildContext context, SignUpParams params) async {
     dispatchState(BlocLoadingState());
+    Map data = registerDataAnalyze(params);
+    if (data['error']) {
+      showAnalyzeError(context, data['data']);
+      dispatchState(BlocErrorState());
+    } else {
+      var result = await signUpUsecase.call(params);
 
-    var result = await signUpUsecase.call(params);
+      result.fold((l) {
+        inspect(l);
+        List<String> error = [];
+        error.add(l.message);
 
-    result.fold((l) {
-      dispatchState(BlocStableState());
-    }, (r) {
-      addUserInfoUsecase.call(params);
-      navigateRemoveUntil(context, '/homeView');
-    });
+        showAuthenticationError(context, error);
+        dispatchState(BlocErrorState());
+      }, (r) {
+        navigateRemoveUntil(context, '/homeView');
+      });
+    }
   }
 }

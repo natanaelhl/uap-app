@@ -57,7 +57,7 @@ class SignInComponent extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            'Cadastre-se',
+                            'Login',
                             style: textTitleStyle,
                           ),
                           registerElevatedButton,
@@ -80,10 +80,13 @@ class SignInComponent extends StatelessWidget {
                         ],
                       ),
                       const SizedBox(
-                        height: 20,
+                        height: 5,
                       ),
                       SizedBox(
                         width: MediaQuery.of(context).size.width * 0.015,
+                      ),
+                      const SizedBox(
+                        height: 10,
                       ),
                       Row(
                         children: [
@@ -104,8 +107,17 @@ class SignInComponent extends StatelessWidget {
                           ),
                         ],
                       ),
+                      const SizedBox(height: 5),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          TextButton(
+                              onPressed: () {},
+                              child: const Text('Esqueceu a senha?'))
+                        ],
+                      ),
                       const SizedBox(
-                        height: 20,
+                        height: 10,
                       ),
                       loginElevatedButton,
                       const SizedBox(

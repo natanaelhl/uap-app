@@ -5,6 +5,7 @@ import 'package:uap_app/core/widgets/custom_elevated_button_widget.dart';
 import 'package:uap_app/core/widgets/custom_text_form_field_widget.dart';
 import 'package:uap_app/features/login/bloc/login_bloc.dart';
 import 'package:uap_app/features/login/bloc/login_event.dart';
+import 'package:uap_app/features/login/params/sign_in_params.dart';
 import 'package:uap_app/features/login/view/components/sign_in_component.dart';
 
 class LoginViewStableState extends StatefulWidget {
@@ -69,7 +70,13 @@ class _LoginViewStableStateState extends State<LoginViewStableState> {
         width: double.infinity,
         height: 37,
         color: AppColors.color3.color,
-        onPressed: () {},
+        onPressed: () {
+          widget.bloc.dispatchEvent(LoginEventSignIn(
+              context: context,
+              params: SignInParams(
+                  email: emailController.text,
+                  password: passwordController.text)));
+        },
         child: const Text('Faça Login'));
   }
 }
