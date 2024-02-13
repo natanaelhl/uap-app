@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:uap_app/core/bloc/bloc_state.dart';
 import 'package:uap_app/core/drawer/widget/custom_drawer_widget.dart';
 import 'package:uap_app/core/services/auth_service.dart';
 import 'package:uap_app/core/services/database_service.dart';
 import 'package:uap_app/core/widgets/custom_app_bar_widget.dart';
+import 'package:uap_app/features/create_map/bloc/create_map_bloc.dart';
+import 'package:uap_app/features/create_map/bloc/create_map_event.dart';
 import 'package:uap_app/features/create_map/controller/create_map_controller.dart';
 import 'package:uap_app/features/create_map/repositories/create_person_map_repository_impl.dart';
 import 'package:uap_app/features/create_map/repositories/get_person_list_repository_impl.dart';
@@ -18,6 +21,7 @@ class CreateMapView extends StatefulWidget {
 }
 
 class _CreateMapViewState extends State<CreateMapView> {
+  late CreateMapBloc _bloc;
   late CreateMapController _controller;
 
   @override
@@ -33,7 +37,10 @@ class _CreateMapViewState extends State<CreateMapView> {
       context,
     );
 
-    _controller.getPersonList();
+     _bloc = CreateMapBloc(GetPersonListUsecaseImpl(GetPersonListRepositoryImpl(AuthService(), DatabaseService())));
+    _bloc.dispatchEvent(CreateMapEventGetPeopleList());
+
+    
   }
 
   @override
@@ -45,7 +52,17 @@ class _CreateMapViewState extends State<CreateMapView> {
       drawer: CustomDrawerWidget(
         context: context,
       ),
-      body: buildCreateMapView(_controller),
+      body: StreamBuilder(
+        stream: _bloc.state,
+        builder: (context, snapshot){
+          if (snapshot.hasData) {
+            if (snapshot.data is BlocStableState){
+              return buildCreateMapView(_controller, _bloc, snapshot.data!.data);
+            } return SizedBox.shrink();
+          } else{
+            return SizedBox.shrink();
+          }
+        }),
     );
   }
 }

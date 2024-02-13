@@ -22,11 +22,25 @@ class _LoginViewStableStateState extends State<LoginViewStableState> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
 
+  bool obscureText = true;
+
   @override
   Widget build(BuildContext context) {
     return SignInComponent(
         emailField: _buildCustomTextField(emailController, 'E-mail'),
-        passwordField: _buildCustomTextField(passwordController, 'Senha'),
+        passwordField: _buildCustomTextField(passwordController, 'Senha',
+            obscureText: obscureText,
+            icon: Icons.lock,
+            suffixIcon: IconButton(
+                onPressed: () {
+                  setState(() {
+                    obscureText = !obscureText;
+                  });
+                },
+                icon: Icon(
+                  obscureText ? Icons.visibility : Icons.visibility_off,
+                  color: Colors.grey,
+                ))),
         registerElevatedButton: _buildCustomElevatedRegisterButton(),
         loginElevatedButton: _buildCustomElevatedLoginButton());
   }
@@ -55,14 +69,7 @@ class _LoginViewStableStateState extends State<LoginViewStableState> {
           widget.bloc.dispatchEvent(LoginEventNavigateNamed(
               context: context, routeName: '/registerView'));
         },
-        child: widget.state is BlocLoadingState
-            ? SizedBox(
-                width: 20,
-                height: 20,
-                child: CircularProgressIndicator(
-                  color: AppColors.color4.color,
-                ))
-            : const Text('Registre-se'));
+        child: const Text('Registre-se'));
   }
 
   Widget _buildCustomElevatedLoginButton() {
@@ -77,6 +84,13 @@ class _LoginViewStableStateState extends State<LoginViewStableState> {
                   email: emailController.text,
                   password: passwordController.text)));
         },
-        child: const Text('Faça Login'));
+        child: widget.state is BlocLoadingState
+            ? SizedBox(
+                width: 20,
+                height: 20,
+                child: CircularProgressIndicator(
+                  color: AppColors.color4.color,
+                ))
+            : const Text('Continue'));
   }
 }

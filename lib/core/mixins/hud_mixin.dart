@@ -13,6 +13,10 @@ mixin class HudMixins {
     Navigator.of(context).pushNamed(routeName);
   }
 
+  void navigatePop(BuildContext context) {
+    Navigator.of(context).pop();
+  }
+
   void showAuthenticationError(BuildContext context, List data) {
     showDialog(
         context: context,

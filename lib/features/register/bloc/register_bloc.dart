@@ -1,5 +1,4 @@
 import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:uap_app/core/bloc/bloc.dart';
 import 'package:uap_app/core/bloc/bloc_event.dart';
@@ -20,7 +19,7 @@ class RegisterBloc extends Bloc {
     if (event is RegisterEventOnReady) {
       dispatchState(BlocStableState());
     } else if (event is RegisterEventNavigateNamed) {
-      navigateNamed(event.context, event.routeName);
+      navigatePop(event.context);
     } else if (event is RegisterEventSignUp) {
       _handleRegisterAuthentication(event.context, event.params);
     }

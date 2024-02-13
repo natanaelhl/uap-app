@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:uap_app/core/bloc/bloc.dart';
 import 'package:uap_app/core/bloc/bloc_event.dart';
@@ -28,16 +26,18 @@ class LoginBloc extends Bloc {
     Map data = loginDataAnalyze(params);
     if (data['error']) {
       showAnalyzeError(context, data['data']);
+      dispatchState(BlocErrorState());
     } else {
+      dispatchState(BlocLoadingState());
       var result = await signInUsecase.call(params);
 
       result.fold((l) {
-        inspect(l);
         List<String> error = [];
         error.add(l.message);
-
+        dispatchState(BlocErrorState());
         showAuthenticationError(context, error);
       }, (r) {
+        dispatchState(BlocStableState());
         navigateRemoveUntil(context, '/homeView');
       });
     }

@@ -5,6 +5,7 @@ import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:uap_app/core/colors/app_colors.dart';
 import 'package:uap_app/core/widgets/custom_elevated_icon_button_widget.dart';
 import 'package:uap_app/core/widgets/custom_text_field_widget.dart';
+import 'package:uap_app/features/create_map/bloc/create_map_bloc.dart';
 import 'package:uap_app/features/create_map/controller/create_map_controller.dart';
 import 'package:uap_app/features/create_map/params/person_params.dart';
 
@@ -16,8 +17,9 @@ final TextStyle textStyle = TextStyle(
 );
 
 class ComplementFormMap extends StatelessWidget {
+  final CreateMapBloc bloc;
   final CreateMapController controller;
-  ComplementFormMap({super.key, required this.controller});
+  ComplementFormMap({super.key, required this.bloc, required this.controller});
 
   final MaskTextInputFormatter _maskTextInputFormatter =
       MaskTextInputFormatter(mask: '##/##/####');
