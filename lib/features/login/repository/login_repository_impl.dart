@@ -2,8 +2,8 @@ import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:uap_app/core/failure/failure.dart';
 import 'package:uap_app/core/services/auth_service.dart';
+import 'package:uap_app/core/utils/params.dart';
 import 'package:uap_app/core/utils/string_translator.dart';
-import 'package:uap_app/features/login/params/sign_in_params.dart';
 import 'package:uap_app/features/login/repository/login_repository.dart';
 
 class LoginRepositoryImpl implements LoginRepository {

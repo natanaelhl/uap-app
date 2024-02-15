@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:uap_app/core/bloc/bloc.dart';
 import 'package:uap_app/core/bloc/bloc_event.dart';
 import 'package:uap_app/core/bloc/bloc_state.dart';
+import 'package:uap_app/core/utils/params.dart';
 import 'package:uap_app/features/login/bloc/login_event.dart';
-import 'package:uap_app/features/login/params/sign_in_params.dart';
 import 'package:uap_app/features/login/usecases/sign_in_usecases.dart';
 
 class LoginBloc extends Bloc {

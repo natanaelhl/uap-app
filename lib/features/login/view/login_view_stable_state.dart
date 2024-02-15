@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:uap_app/core/bloc/bloc_state.dart';
 import 'package:uap_app/core/colors/app_colors.dart';
+import 'package:uap_app/core/utils/params.dart';
 import 'package:uap_app/core/widgets/custom_elevated_button_widget.dart';
 import 'package:uap_app/core/widgets/custom_text_form_field_widget.dart';
 import 'package:uap_app/features/login/bloc/login_bloc.dart';
 import 'package:uap_app/features/login/bloc/login_event.dart';
-import 'package:uap_app/features/login/params/sign_in_params.dart';
 import 'package:uap_app/features/login/view/components/sign_in_component.dart';
 
 class LoginViewStableState extends StatefulWidget {

@@ -2,8 +2,8 @@ import 'package:dartz/dartz.dart';
 import 'package:uap_app/core/failure/failure.dart';
 import 'package:uap_app/core/services/auth_service.dart';
 import 'package:uap_app/core/services/database_service.dart';
+import 'package:uap_app/core/utils/params.dart';
 import 'package:uap_app/features/create_map/models/person_model.dart';
-import 'package:uap_app/features/create_map/params/person_params.dart';
 import 'package:uap_app/features/create_map/repositories/create_person_map_repository.dart';
 
 class CreatePersonMapRepositoryImpl implements CreatePersonMapRepository {

@@ -1,6 +1,23 @@
 import 'package:get_it/get_it.dart';
 import 'package:uap_app/core/services/auth_service.dart';
 import 'package:uap_app/core/services/database_service.dart';
+import 'package:uap_app/features/create_map/bloc/create_map_bloc.dart';
+import 'package:uap_app/features/create_map/repositories/create_person_map_repository.dart';
+import 'package:uap_app/features/create_map/repositories/create_person_map_repository_impl.dart';
+import 'package:uap_app/features/create_map/repositories/delete_person_map_repository.dart';
+import 'package:uap_app/features/create_map/repositories/delete_person_map_repository_impl.dart';
+import 'package:uap_app/features/create_map/repositories/edit_person_map_repository.dart';
+import 'package:uap_app/features/create_map/repositories/edit_person_map_repository_impl.dart';
+import 'package:uap_app/features/create_map/repositories/get_person_list_repository.dart';
+import 'package:uap_app/features/create_map/repositories/get_person_list_repository_impl.dart';
+import 'package:uap_app/features/create_map/usecases/create_person_map_usecase.dart';
+import 'package:uap_app/features/create_map/usecases/create_person_map_usecase_impl.dart';
+import 'package:uap_app/features/create_map/usecases/delete_person_map_usecase.dart';
+import 'package:uap_app/features/create_map/usecases/delete_person_map_usecase_impl.dart';
+import 'package:uap_app/features/create_map/usecases/edit_person_map_usecase.dart';
+import 'package:uap_app/features/create_map/usecases/edit_person_map_usecase_impl.dart';
+import 'package:uap_app/features/create_map/usecases/get_person_list_usecase.dart';
+import 'package:uap_app/features/create_map/usecases/get_person_list_usecase_impl.dart';
 import 'package:uap_app/features/login/bloc/login_bloc.dart';
 import 'package:uap_app/features/login/repository/login_repository.dart';
 import 'package:uap_app/features/login/repository/login_repository_impl.dart';
@@ -31,6 +48,15 @@ class Injector {
         () => AddUserInfoRepositoryImpl(getIt(), getIt()));
     getIt.registerLazySingleton<LoginRepository>(
         () => LoginRepositoryImpl(getIt()));
+    // create_map
+    getIt.registerLazySingleton<CreatePersonMapRepository>(
+        () => CreatePersonMapRepositoryImpl(getIt(), getIt()));
+    getIt.registerLazySingleton<GetPersonListRepository>(
+        () => GetPersonListRepositoryImpl(getIt(), getIt()));
+    getIt.registerLazySingleton<DeletePersonMapRepository>(
+        () => DeletePersonMapRepositoryImpl(getIt(), getIt()));
+    getIt.registerLazySingleton<EditPersonMapRepository>(
+        () => EditPersonMapRepositoryImpl(getIt(), getIt()));
 
     //USECASES
     getIt
@@ -39,9 +65,21 @@ class Injector {
         () => AddUserInfoUsecaseImpl(getIt()));
     getIt.registerLazySingleton<SignInUsecases>(
         () => SignInUsecasesImpl(getIt()));
+    // create_map
+    getIt.registerLazySingleton<CreatePersonMapUsecase>(
+        () => CreatePersonMapUsecaseImpl(getIt()));
+    getIt.registerLazySingleton<GetPersonListUsecase>(
+        () => GetPersonListUsecaseImpl(getIt()));
+    getIt.registerLazySingleton<DeletePersonMapUsecase>(
+        () => DeletePersonMapUsecaseImpl(getIt()));
+    getIt.registerLazySingleton<EditPersonMapUsecase>(
+        () => EditPersonMapUsecaseImpl(getIt()));
 
     //BLOC
     getIt.registerFactory(() => RegisterBloc(getIt(), getIt()));
     getIt.registerFactory(() => LoginBloc(getIt()));
+    // create_map
+    getIt.registerFactory(
+        () => CreateMapBloc(getIt(), getIt(), getIt(), getIt()));
   }
 }

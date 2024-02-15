@@ -1,13 +1,11 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:uap_app/core/colors/app_colors.dart';
+import 'package:uap_app/core/utils/params.dart';
 import 'package:uap_app/core/widgets/custom_elevated_icon_button_widget.dart';
 import 'package:uap_app/core/widgets/custom_text_field_widget.dart';
 import 'package:uap_app/features/create_map/bloc/create_map_bloc.dart';
-import 'package:uap_app/features/create_map/controller/create_map_controller.dart';
-import 'package:uap_app/features/create_map/params/person_params.dart';
+import 'package:uap_app/features/create_map/bloc/create_map_event.dart';
 
 final TextStyle textStyle = TextStyle(
   color: AppColors.color3.color,
@@ -18,8 +16,10 @@ final TextStyle textStyle = TextStyle(
 
 class ComplementFormMap extends StatelessWidget {
   final CreateMapBloc bloc;
-  final CreateMapController controller;
-  ComplementFormMap({super.key, required this.bloc, required this.controller});
+  ComplementFormMap({
+    super.key,
+    required this.bloc,
+  });
 
   final MaskTextInputFormatter _maskTextInputFormatter =
       MaskTextInputFormatter(mask: '##/##/####');
@@ -69,10 +69,10 @@ class ComplementFormMap extends StatelessWidget {
               child: SizedBox(
                   child: CustomElevatedIconButtonWidget(
                 onPressed: () async {
-                  final result = await controller.createPersonMap(PersonParams(
-                      name: nameController.text, data: dataController.text));
-
-                  inspect(result);
+                  PersonParams personParams = PersonParams(
+                      name: nameController.text, data: dataController.text);
+                  bloc.dispatchEvent(
+                      CreateMapEventCreatePerson(params: personParams));
                 },
                 label: const Text('Criar Mapa'),
                 color: AppColors.color3.color,

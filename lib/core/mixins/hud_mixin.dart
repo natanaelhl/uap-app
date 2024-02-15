@@ -1,10 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:uap_app/core/utils/params.dart';
 import 'package:uap_app/core/validators/string_validator.dart';
 import 'package:uap_app/core/widgets/custom_auth_error_alert_dialog.dart';
-import 'package:uap_app/features/login/params/sign_in_params.dart';
-import 'package:uap_app/features/register/params/sign_up_params.dart';
+import 'package:uap_app/features/create_map/models/person_model.dart';
+import 'package:uap_app/features/create_map/view/widgets/custom_edit_alert_dialog.dart';
 
 mixin class HudMixins {
+  Future showEditContact(BuildContext context, PersonModel person) async {
+    return await showDialog(
+        context: context,
+        builder: (context) => CustomEditAlertDialog(person: person));
+  }
+
   void navigateRemoveUntil(BuildContext context, String routeName) {
     Navigator.of(context).pushNamedAndRemoveUntil(routeName, (route) => false);
   }
@@ -29,7 +36,7 @@ mixin class HudMixins {
         builder: (context) => CustomAuthErrorAlertDialog(data: data));
   }
 
-  Map registerDataAnalyze(SignUpParams params) {
+  Map registerDataAnalyze(params) {
     var emailError = StringValidator.emailValidator(params.email);
     var firstNameError = StringValidator.firstNameValidator(params.firstName);
     var lastNameError = StringValidator.lastNameValidator(params.lastName);
