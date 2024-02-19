@@ -1,4 +1,4 @@
-class Triangle {
+class CreateTriangle {
   static Map<String, dynamic> reducaoNumerologica(
       List<int> lista, int numberSum) {
     List<int> sumList = processarLista(lista, numberSum);
@@ -31,7 +31,7 @@ class Triangle {
     for (int numero in lista) {
       // Soma o valor da lista com o valor inteiro
       int resultado = numero + valorInteiro;
-      print(valorInteiro);
+      print('desconhecido = $valorInteiro');
       // Reduz o número para um dígito, se necessário
       while (resultado >= 10) {
         int somaDigitos = 0;

@@ -23,6 +23,7 @@ import 'package:uap_app/features/login/repository/login_repository.dart';
 import 'package:uap_app/features/login/repository/login_repository_impl.dart';
 import 'package:uap_app/features/login/usecases/sign_in_usecases.dart';
 import 'package:uap_app/features/login/usecases/sign_in_usecases_impl.dart';
+import 'package:uap_app/features/person_map/presentation/bloc/person_map_bloc.dart';
 import 'package:uap_app/features/register/bloc/register_bloc.dart';
 import 'package:uap_app/features/register/repository/add_user_info_repository.dart';
 import 'package:uap_app/features/register/repository/add_user_info_repository_impl.dart';
@@ -81,5 +82,7 @@ class Injector {
     // create_map
     getIt.registerFactory(
         () => CreateMapBloc(getIt(), getIt(), getIt(), getIt()));
+    // person_map
+    getIt.registerFactory(() => PersonMapBloc());
   }
 }

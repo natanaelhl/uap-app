@@ -4,7 +4,6 @@ import 'package:uap_app/core/injector/injector.dart';
 import 'package:uap_app/features/home/view/home_view.dart';
 import 'package:uap_app/features/create_map/view/create_map_view.dart';
 import 'package:uap_app/features/login/view/login_view.dart';
-import 'package:uap_app/features/person_map/presentation/ui/person_map_view.dart';
 import 'package:uap_app/features/register/view/register_view.dart';
 import 'package:uap_app/firebase_options.dart';
 
@@ -34,7 +33,6 @@ class MyApp extends StatelessWidget {
         '/registerView': (_) => const RegisterView(),
         '/loginView': (_) => const LoginView(),
         '/personListView': (_) => const CreateMapView(),
-        '/personMapView': (_) => const PersonMapView(),
         '/homeView': (_) => const HomeView(),
       },
       home: const LoginView(),

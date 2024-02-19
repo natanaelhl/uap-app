@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:uap_app/features/person_map/controller/person_map_controller.dart';
 import 'package:uap_app/features/person_map/model/person_map_model.dart';
-import 'package:uap_app/features/person_map/presentation/complements/switch_case_complement.dart';
+import 'package:uap_app/features/person_map/presentation/widgets/custom_switch_case_widget.dart';
 import 'package:uap_app/features/person_map/presentation/widgets/custom_drop_down_button.dart';
 
-class CustomAlertDialog extends StatelessWidget {
+class CustomAlertDialog extends StatefulWidget {
   final PersonMapModel personMap;
-  final PersonMapController controller;
-  const CustomAlertDialog(
-      {required this.personMap, required this.controller, super.key});
+  const CustomAlertDialog({required this.personMap, super.key});
 
+  @override
+  State<CustomAlertDialog> createState() => _CustomAlertDialogState();
+}
+
+class _CustomAlertDialogState extends State<CustomAlertDialog> {
+  int indexSelected = 0;
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -23,12 +26,16 @@ class CustomAlertDialog extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               CustomDropDownButton(
-                controller: controller,
+                onSelected: (selectValue) {
+                  setState(() {
+                    indexSelected = selectValue;
+                  });
+                },
               ),
               const SizedBox(
                 height: 30,
               ),
-              SwitchCaseComplement(personMap: personMap, controller: controller)
+              buildContent(indexSelected, widget.personMap)
             ],
           ),
         ),

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:uap_app/features/person_map/controller/person_map_controller.dart';
 
 const List<String> list = <String>[
   'Triângulo da Vida',
@@ -9,8 +8,8 @@ const List<String> list = <String>[
 ];
 
 class CustomDropDownButton extends StatefulWidget {
-  final PersonMapController controller;
-  const CustomDropDownButton({required this.controller, super.key});
+  final Function(int) onSelected;
+  const CustomDropDownButton({required this.onSelected, super.key});
 
   @override
   State<CustomDropDownButton> createState() => _CustomDropDownButtonState();
@@ -18,7 +17,7 @@ class CustomDropDownButton extends StatefulWidget {
 
 class _CustomDropDownButtonState extends State<CustomDropDownButton> {
   String dropdownValue = list.first;
-
+  int index = 0;
   @override
   Widget build(BuildContext context) {
     return DropdownButtonFormField<String>(
@@ -30,13 +29,11 @@ class _CustomDropDownButtonState extends State<CustomDropDownButton> {
       icon: const Icon(Icons.arrow_downward),
       elevation: 16,
       style: const TextStyle(color: Colors.deepPurple),
-      onChanged: (String? value) {
-        // This is called when the user selects an item.
-        dropdownValue = value!;
-
-        int index = list.indexOf(dropdownValue);
-
-        widget.controller.changeDropdownTriangle(index);
+      onChanged: (String? newValue) {
+        setState(() {
+          int index = list.indexOf(newValue!);
+          widget.onSelected(index);
+        });
       },
       items: list.map<DropdownMenuItem<String>>((String value) {
         return DropdownMenuItem<String>(

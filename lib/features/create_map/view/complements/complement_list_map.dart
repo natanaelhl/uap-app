@@ -6,6 +6,7 @@ import 'package:uap_app/core/widgets/custom_text_field_widget.dart';
 import 'package:uap_app/features/create_map/bloc/create_map_bloc.dart';
 import 'package:uap_app/features/create_map/bloc/create_map_event.dart';
 import 'package:uap_app/features/create_map/models/person_model.dart';
+import 'package:uap_app/features/person_map/presentation/ui/person_map_view.dart';
 
 class ComplementListMap extends StatefulWidget {
   final CreateMapBloc bloc;
@@ -91,9 +92,11 @@ class _ComplementListMapState extends State<ComplementListMap> {
                     elevation: 4,
                     margin: const EdgeInsets.symmetric(vertical: 10),
                     child: GestureDetector(
-                      onTap: () => Navigator.pushNamed(
-                          context, '/personMapView',
-                          arguments: _foundUsers[index]),
+                      onTap: () => Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>
+                                  PersonMapView(person: _foundUsers[index]))),
                       child: ListTile(
                         leading: IconButton(
                             onPressed: () {

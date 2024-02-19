@@ -53,7 +53,7 @@ class CustomIntMatrixWidget extends StatelessWidget {
       ));
     }
 
-    print(patterns); // Imprime os padrões identificados
+    print('sequencias = $patterns'); // Imprime os padrões identificados
 
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,

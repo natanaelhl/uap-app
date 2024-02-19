@@ -1,15 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:uap_app/core/utils/numerologia.dart';
 import 'package:uap_app/core/utils/params.dart';
 import 'package:uap_app/core/validators/string_validator.dart';
 import 'package:uap_app/core/widgets/custom_auth_error_alert_dialog.dart';
 import 'package:uap_app/features/create_map/models/person_model.dart';
 import 'package:uap_app/features/create_map/view/widgets/custom_edit_alert_dialog.dart';
+import 'package:uap_app/features/person_map/model/person_map_model.dart';
+import 'package:uap_app/features/person_map/presentation/widgets/custom_alert_dialog.dart';
 
 mixin class HudMixins {
   Future showEditContact(BuildContext context, PersonModel person) async {
     return await showDialog(
         context: context,
         builder: (context) => CustomEditAlertDialog(person: person));
+  }
+
+  Future showTriangle(BuildContext context, PersonMapModel personMap) {
+    return showDialog(
+        context: context,
+        builder: (context) => CustomAlertDialog(
+              personMap: personMap,
+            ));
   }
 
   void navigateRemoveUntil(BuildContext context, String routeName) {
@@ -72,5 +83,23 @@ mixin class HudMixins {
     } else {
       return {'error': true, 'data': dataErros};
     }
+  }
+
+  PersonMapModel getMapArcane(
+      String fullName, String numberList, String dataNasc) {
+    Map result =
+        Numerologia.calcularNumerologia(fullName, numberList, dataNasc);
+
+    PersonMapModel personMap = PersonMapModel(
+        name: result['name'],
+        arcanoAtual: result['arcanoAtual'],
+        listNumbers: result['list_numbers'],
+        faseAtual: result['faseAtual'],
+        indiceResultante1: result['indiceResultante1'],
+        indiceResultante2: result['indiceResultante2'],
+        trianglelist: result['triangle_list'],
+        dataNasc: result['data_nasc']);
+
+    return personMap;
   }
 }
