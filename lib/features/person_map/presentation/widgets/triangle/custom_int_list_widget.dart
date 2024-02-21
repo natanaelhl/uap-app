@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class CustomIntListWidget extends StatefulWidget {
-  final Function(String) onConcatenatedNumbers;
   final List<int> intList;
   final int index1;
   final int index2;
+  final Function(String) onSelected;
 
   const CustomIntListWidget({
     Key? key,
-    required this.onConcatenatedNumbers,
+    required this.onSelected,
     required this.intList,
     required this.index1,
     required this.index2,
@@ -28,12 +29,11 @@ class _CustomIntListWidgetState extends State<CustomIntListWidget> {
         widget.index2 < widget.intList.length) {
       String concatenatedNumbers =
           '${widget.intList[widget.index1]}${widget.intList[widget.index2]}';
-      setState(() {
-        widget.onConcatenatedNumbers(concatenatedNumbers);
-      });
 
-      print(
-          'arcano = ' + concatenatedNumbers); // Imprime os números concatenados
+      
+      setState(() {
+        widget.onSelected(concatenatedNumbers);
+      });
     }
 
     List<Widget> numberWidgets = [];

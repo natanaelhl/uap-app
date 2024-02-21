@@ -6,21 +6,12 @@ import 'package:uap_app/core/widgets/custom_auth_error_alert_dialog.dart';
 import 'package:uap_app/features/create_map/models/person_model.dart';
 import 'package:uap_app/features/create_map/view/widgets/custom_edit_alert_dialog.dart';
 import 'package:uap_app/features/person_map/model/person_map_model.dart';
-import 'package:uap_app/features/person_map/presentation/widgets/custom_alert_dialog.dart';
 
 mixin class HudMixins {
   Future showEditContact(BuildContext context, PersonModel person) async {
     return await showDialog(
         context: context,
         builder: (context) => CustomEditAlertDialog(person: person));
-  }
-
-  Future showTriangle(BuildContext context, PersonMapModel personMap) {
-    return showDialog(
-        context: context,
-        builder: (context) => CustomAlertDialog(
-              personMap: personMap,
-            ));
   }
 
   void navigateRemoveUntil(BuildContext context, String routeName) {

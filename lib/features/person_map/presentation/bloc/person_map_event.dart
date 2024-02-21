@@ -4,10 +4,19 @@ import 'package:uap_app/features/create_map/models/person_model.dart';
 
 class PersonMapEvent extends BlocEvent {}
 
-class PersonMapEventShowAlertDialog implements PersonMapEvent {
-  final BuildContext context;
+class PersonMapEventOnReady implements PersonMapEvent {
   final PersonModel person;
 
+  const PersonMapEventOnReady({required this.person});
+}
+
+class PersonMapEventShowAlertDialog implements PersonMapEvent {
+  final AlertDialog customAlertDialog;
+  final PersonModel person;
+  final BuildContext context;
+
   const PersonMapEventShowAlertDialog(
-      {required this.context, required this.person});
+      {required this.customAlertDialog,
+      required this.context,
+      required this.person});
 }
